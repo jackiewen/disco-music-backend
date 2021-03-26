@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig.paths.json",
+    "compilerOptions": {
+        "target": "ES2016",
+        "module": "commonjs",
+        "outDir": "./dist",
+        "strict": true,
+        "esModuleInterop": true,
+        "inlineSourceMap": true,
+        "noImplicitAny": true
+    }
+}

@@ -5,7 +5,8 @@
             "@src/*": ["src/*"],
             "@common/*": ["src/common/*"],
             "@models/*": ["src/models/*"],
-            "@users/*": ["src/users/*"]
+            "@users/*": ["src/modules/users/*"],
+            "@songs/*": ["src/modules/songs/*"]
         }
     }
 }

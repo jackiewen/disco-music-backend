@@ -2,21 +2,20 @@ import UserModel, { IUser } from '@models/user.model';
 import debug from 'debug';
 
 
-const log: debug.IDebugger = debug('app:in-memory-dao');
+const log: debug.IDebugger = debug('app:users-dao');
 
-class UserDao {
-    private static instance: UserDao;
-    users: Array<IUser> = [];
+class UsersDao {
+    private static instance: UsersDao;
 
     constructor() {
         log('Create new instance of UsersDao');
     }
 
-    static getInstance(): UserDao {
-        if (!UserDao.instance) {
-            UserDao.instance = new UserDao();
+    static getInstance(): UsersDao {
+        if (!UsersDao.instance) {
+            UsersDao.instance = new UsersDao();
         }
-        return UserDao.instance;
+        return UsersDao.instance;
     }
 
     async getUsers(limit: number, page: number, filter = {}) {
@@ -32,8 +31,7 @@ class UserDao {
     }
 
     async getUserByEmail(email: string) {
-        const objIndex = this.users.findIndex((obj: { email: string; }) => obj.email === email);
-        let currentUser = this.users[objIndex];
+        let currentUser = await UserModel.findOne({ email: email }).exec();
         if (currentUser) {
             return currentUser;
         } else {
@@ -42,4 +40,4 @@ class UserDao {
     }
 }
 
-export default UserDao.getInstance();
+export default UsersDao.getInstance();

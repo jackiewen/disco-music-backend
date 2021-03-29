@@ -6,7 +6,8 @@
             "@common/*": ["src/common/*"],
             "@models/*": ["src/models/*"],
             "@users/*": ["src/modules/users/*"],
-            "@songs/*": ["src/modules/songs/*"]
+            "@songs/*": ["src/modules/songs/*"],
+            "@tracks/*": ["src/modules/tracks/*"]
         }
     }
 }

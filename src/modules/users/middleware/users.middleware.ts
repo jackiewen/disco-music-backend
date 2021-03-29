@@ -1,5 +1,5 @@
 import express from 'express';
-import usersService from '@users/services/users.service';
+import usersDao from '@users/daos/users.dao';
 
 class UsersMiddleware {
     async validateRequiredUserBodyFields(req: express.Request, res: express.Response, next: express.NextFunction) {
@@ -11,7 +11,8 @@ class UsersMiddleware {
     }
 
     async validateSameEmailDoesntExist(req: express.Request, res: express.Response, next: express.NextFunction) {
-        const user = await usersService.getUserByEmail(req.body.email);
+        const user = await usersDao.getUserByEmail(req.body.email);
+        console.log('user', user);
         if (user) {
             res.status(400).send({error: `User email already exists`});
         } else {

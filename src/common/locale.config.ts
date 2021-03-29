@@ -34,4 +34,5 @@ class Locale {
     }
 }
 
+export function getLang(lang: string) { return Locale.getInstance().getLoc().t(lang) }
 export default Locale.getInstance();
